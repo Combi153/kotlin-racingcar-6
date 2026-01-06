@@ -8,5 +8,5 @@
 - [x] Random number generator
 - [x] Game
     - count
-- [ ] GameService
-- [ ] GameController
+- [x] GameService
+- [x] GameController
