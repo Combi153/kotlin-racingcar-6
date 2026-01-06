@@ -1,11 +1,14 @@
 package racingcar.domain
 
-class Car(val name: String, var position: Int = 0) {
-    init {
-        require(name.length <= 5) { "Name must be at most 5 characters" }
+class Car private constructor(val name: CarName, val position: Position) {
+
+    fun move(): Car {
+        return Car(name, position.move())
     }
 
-    fun move() {
-        position += 1
+    companion object {
+        fun of(name: String, position: Int = 0): Car {
+            return Car(CarName(name), Position(position))
+        }
     }
 }

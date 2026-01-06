@@ -13,7 +13,7 @@ class CarTest : BehaviorSpec({
 
             then("throws an exception") {
                 shouldThrowExactly<IllegalArgumentException> {
-                    Car(carName)
+                    Car.of(carName)
                 }.shouldHaveMessage("Name must be at most 5 characters")
             }
         }
@@ -22,20 +22,20 @@ class CarTest : BehaviorSpec({
             val carName = "a".repeat(5)
 
             then("not throws an exception") {
-                shouldNotThrow<IllegalArgumentException> { Car(carName) }
+                shouldNotThrow<IllegalArgumentException> { Car.of(carName) }
             }
         }
     }
 
     given("a car") {
         val position = 0
-        val car = Car("car", position)
+        val car = Car.of("car", position)
 
         `when`("moves") {
-            car.move()
+            val movedCar = car.move()
 
             then("position of the car goes up") {
-                car.position shouldBe 1
+                movedCar.position.value shouldBe 1
             }
         }
     }
